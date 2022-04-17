@@ -1,40 +1,48 @@
 <html>
-    <head>
-	<title>W02: task 3</title>
-    </head>
-    <body>
+
+<head>
+    <title>W02: task 3</title>
+</head>
+
+<body>
+    <div>
         <label for="x0">x0:</label>
-        <input type="number" id="x0" required/>
+        <input type="number" id="x0" required />
         <label for="y0">y0:</label>
-        <input type="number" id="y0" required/>
+        <input type="number" id="y0" required />
         <label for="z0">z0:</label>
-        <input type="number" id="z0" required/>
+        <input type="number" id="z0" required />
+    </div>
+    <div>
         <label for="x1">x1:</label>
-        <input type="number" id="x1" required/>
+        <input type="number" id="x1" required />
         <label for="y1">y1:</label>
-        <input type="number" id="y1" required/>
+        <input type="number" id="y1" required />
         <label for="z1">z1:</label>
-        <input type="number" id="z1" required/>
+        <input type="number" id="z1" required />
+    </div>
+    <div>
         <label for="x2">x2:</label>
-        <input type="number" id="x2" required/>
+        <input type="number" id="x2" required />
         <label for="y2">y2:</label>
-        <input type="number" id="y2" required/>
+        <input type="number" id="y2" required />
         <label for="z2">z2:</label>
-        <input type="number" id="z2" required/>
-        <input type="button" onclick="" value="Solve"/>
-	<script src="vec3.js"></script>
-	<script>
+        <input type="number" id="z2" required />
+    </div>
+    <input type="button" onclick="" value="Solve" />
+    <script src="vec3.js"></script>
+    <script>
         var x0, y0, z0; // (input vertex 0)
         var x1, y1, z1; // (input vertex 1)
         var x2, y2, z2; // (input vertex 2)
-        var v0 = new Vec3( x0, y0, z0 );
-        var v1 = new Vec3( x1, y1, z1 );
-        var v2 = new Vec3( x2, y2, z2 );
-        var S = AreaOfTriangle( v0, v1, v2 ); // (output value)
+        var v0 = new Vec3(x0, y0, z0);
+        var v1 = new Vec3(x1, y1, z1);
+        var v2 = new Vec3(x2, y2, z2);
+        var S = AreaOfTriangle(v0, v1, v2); // (output value)
 
         document.write(S)
-	</script>
+    </script>
 
-    </body>
+</body>
+
 </html>
-
