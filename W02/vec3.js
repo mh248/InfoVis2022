@@ -52,3 +52,11 @@ class Vec3 {
         return Math.sqrt( this.x * this.x + this.y * this.y + this.z * this.z );
     }
 }
+
+function AreaOfTriangle(v0, v1, v2) {
+    var a1 = v1.sub(v0)
+    var a2 = v2.sub(v0)
+    //var norm1 = a1.length
+    //var norm2 = a2.length
+    return a1.cross(a2).length
+}
