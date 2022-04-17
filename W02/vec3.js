@@ -53,3 +53,8 @@ class Vec3 {
     }
 }
 
+function AreaOfTriangle(v0, v1, v2) {
+    var a1 = v1.sub(v0)
+    var a2 = v2.sub(v0)
+    return a1.cross(a2).length
+}
