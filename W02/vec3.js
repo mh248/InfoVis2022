@@ -51,10 +51,12 @@ class Vec3 {
     length() {
         return Math.sqrt( this.x * this.x + this.y * this.y + this.z * this.z );
     }
-}
 
-function AreaOfTriangle(v0, v1, v2) {
-    var a1 = v1.sub(v0)
-    var a2 = v2.sub(v0)
-    return a1.cross(a2).length
+    areaOfTriangle(v1, v2) {
+        var a1 = v1.sub(this)
+        var a2 = v2.sub(this)
+        a1.cross(a2).length
+        console.log(a1.cross(a2).length)
+        return a1.cross(a2).length
+    }
 }
