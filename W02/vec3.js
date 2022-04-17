@@ -45,10 +45,13 @@ class Vec3 {
         this.x = y * v.z - z * v.y;
         this.y = z * v.x - x * v.z;
         this.z = x * v.y - y * v.x;
+        console.log(this)
         return this;
     }
 
     length() {
+        console.log(this.x)
+        console.log(Math.sqrt(9))
         return Math.sqrt( this.x * this.x + this.y * this.y + this.z * this.z );
     }
 
