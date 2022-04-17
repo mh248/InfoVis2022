@@ -59,7 +59,7 @@ class Vec3 {
         var a1 = v1.sub(this)
         var a2 = v2.sub(this)
         a1.cross(a2).length
-        console.log(a1.cross(a2).length)
-        return a1.cross(a2).length
+        console.log(a1.cross(a2).length())
+        return a1.cross(a2).length()
     }
 }
