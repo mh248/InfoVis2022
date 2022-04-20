@@ -6,7 +6,7 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script>
 	 var svg = d3.select("body").append("svg");
-	 d3.csv("https://mh248.github.io/InfoVis2021/W04/w04_task2.csv", draw );
+	 d3.csv("https://mh248.github.io/InfoVis2022/W04/w04_task2.csv", draw );
 	 function draw(data){
 	     svg.selectAll("rect").data(data).enter().append("rect")
 	        .attr("x", function(d){ return d.x; })
