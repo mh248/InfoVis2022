@@ -19,7 +19,7 @@
             svg.selectAll("text").data(data).enter().append("text")
                 .text(function (d) {return d.text})
                 .attr("x", function (d) { return d.x-10;})
-                .attr("y", function (d) { return parseInt(parseInt(d.y)+d.height); })
+                .attr("y", function (d) { return parseInt(parseInt(d.y)+parseInt(d.height)); })
         };
 
 
