@@ -23,7 +23,8 @@ class ScatterPlot {
             parent: config.parent,
             width: config.width || 256,
             height: config.height || 256,
-            margin: config.margin || {top:10, right:10, bottom:10, left:10}
+            margin: config.margin || {top:10, right:10, bottom:10, left:10},
+            alpha: config.alpha || 20
         }
         this.data = data;
         this.init();
@@ -43,22 +44,22 @@ class ScatterPlot {
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
         self.xscale = d3.scaleLinear()
-            .range( [0, self.inner_width] );
+            .range( [0, self.inner_width - self.margin.left - self.margin.right] );
 
         self.yscale = d3.scaleLinear()
-            .range( [0, self.inner_height] );
+            .range( [0, self.inner_height - self.margin.top - self.margin.bottom] );
 
         self.xaxis = d3.axisBottom( self.xscale )
             .ticks(6);
 
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top})`);
 
         self.yaxis = d3.axisLeft( self.yscale )
             .ticks(6);
 
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(${self.inner_width}, 0)`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
     }
 
     update() {
@@ -66,11 +67,11 @@ class ScatterPlot {
 
         const xmin = d3.min( self.data, d => d.x );
         const xmax = d3.max( self.data, d => d.x );
-        self.xscale.domain( [xmin, xmax] );
+        self.xscale.domain( [xmin-10, xmax+10] );
 
         const ymin = d3.min( self.data, d => d.y );
         const ymax = d3.max( self.data, d => d.y );
-        self.yscale.domain( [ymin, ymax] );
+        self.yscale.domain( [ymin-10, ymax+10] );
 
         self.render();
     }
