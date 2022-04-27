@@ -58,7 +58,7 @@ class ScatterPlot {
             .ticks(6);
 
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_width})`);
+            .attr('transform', `translate(${self.inner_width}, 0)`);
     }
 
     update() {
