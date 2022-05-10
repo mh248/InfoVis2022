@@ -24,7 +24,6 @@ class ScatterPlot {
             width: config.width || 256,
             height: config.height || 256,
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 },
-            alpha: config.alpha || 20
         }
         this.data = data;
         this.init();
@@ -38,10 +37,10 @@ class ScatterPlot {
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left*2}, ${self.config.margin.top*2})`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
-        self.inner_width = self.config.width - self.config.margin.left*2 - self.config.margin.right*2;
-        self.inner_height = self.config.height - self.config.margin.top*2 - self.config.margin.bottom*2;
+        self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
+        self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
         self.xscale = d3.scaleLinear()
             .range([0, self.inner_width]);
