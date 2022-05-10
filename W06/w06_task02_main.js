@@ -4,9 +4,9 @@ d3.csv("https://mh248.github.io/InfoVis2022/W04/data.csv")
 
         var config = {
             parent: '#drawing_region',
-            width: 256,
-            height: 256,
-            margin: { top: 10, right: 10, bottom: 25, left: 25 }
+            width: 300,
+            height: 300,
+            margin: { top: 10, right: 10, bottom: 35, left: 25 }
         };
 
         const scatter_plot = new ScatterPlot(config, data);
