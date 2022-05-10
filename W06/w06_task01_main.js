@@ -53,7 +53,7 @@ class ScatterPlot {
             .ticks(6);
 
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top})`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top*2})`);
 
         self.yaxis = d3.axisLeft(self.yscale)
             .ticks(6);
