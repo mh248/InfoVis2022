@@ -38,7 +38,7 @@ class ScatterPlot {
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
+            .attr('transform', `translate(${self.config.margin.left*2}, ${self.config.margin.top*2})`);
 
         self.inner_width = self.config.width - self.config.margin.left*2 - self.config.margin.right*2;
         self.inner_height = self.config.height - self.config.margin.top*2 - self.config.margin.bottom*2;
@@ -72,14 +72,6 @@ class ScatterPlot {
         const ymin = d3.min(self.data, d => d.y);
         const ymax = d3.max(self.data, d => d.y);
         self.yscale.domain([ymin - 10, ymax + 10]);
-/*
-        var xscale = d3.scaleLinear()
-            .domain([d3.min(data, d => d.x), d3.max(data, d => d.x)])
-            .range([0, width - margin.left - margin.right]);
-        var yscale = d3.scaleLinear()
-            .domain([d3.min(data, d => d.y), d3.max(data, d => d.y)])
-            .range([0, height - margin.top - margin.bottom]);
-*/
         self.render();
     }
 
