@@ -43,19 +43,19 @@ class ScatterPlot {
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
         self.xscale = d3.scaleLinear()
-            .range([0, self.inner_width]);
+            .range([0, self.inner_width+self.config.margin.left]);
 
         self.yscale = d3.scaleLinear()
-            .range([0, self.inner_height]);
+            .range([0, self.inner_height+self.config.margin.top]);
 
         self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(6);
+            .ticks(8);
 
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top})`);
 
         self.yaxis = d3.axisLeft(self.yscale)
-            .ticks(6);
+            .ticks(8);
 
         self.yaxis_group = self.chart.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
