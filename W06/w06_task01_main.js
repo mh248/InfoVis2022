@@ -40,14 +40,14 @@ class ScatterPlot {
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
-        self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
-        self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
+        self.inner_width = self.config.width - self.config.margin.left*2 - self.config.margin.right*2;
+        self.inner_height = self.config.height - self.config.margin.top*2 - self.config.margin.bottom*2;
 
         self.xscale = d3.scaleLinear()
-            .range([0, self.inner_width - margin.left - margin.right]);
+            .range([0, self.inner_width]);
 
         self.yscale = d3.scaleLinear()
-            .range([0, self.inner_height - margin.top - margin.bottom]);
+            .range([0, self.inner_height]);
 
         self.xaxis = d3.axisBottom(self.xscale)
             .ticks(6);
