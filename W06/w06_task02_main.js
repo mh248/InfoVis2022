@@ -86,7 +86,15 @@ class ScatterPlot {
             .attr("r", d => d.r);
 
         self.xaxis_group
-            .call(self.xaxis);
+            .call(self.xaxis)
+            .append("text")
+            .attr("fill", "black")
+            .attr("x", (self.inner_width - self.config.margin.left - self.config.margin.right) / 2 + self.config.margin.left)
+            .attr("y", 35)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "10pt")
+            .attr("font-weight", "middle")
+            .text("x");
 
         self.yaxis_group
             .call(self.yaxis);
