@@ -97,7 +97,16 @@ class ScatterPlot {
             .text("x");
 
         self.yaxis_group
-            .call(self.yaxis);
+            .call(self.yaxis)
+            .append("text")
+            .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("x", -(self.inner_height - self.config.margin.top - self.config.margin.bottom) / 2 - self.config.margin.top)
+            .attr("y", -35)
+            .attr("transform", "rotate(-90)")
+            .attr("font-weight", "middle")
+            .attr("font-size", "10pt")
+            .text("y");
 
     }
 }
