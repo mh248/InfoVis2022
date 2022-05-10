@@ -53,7 +53,7 @@ class ScatterPlot {
             .ticks(6);
 
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top*2})`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.inner_height + self.config.margin.top})`);
 
         self.yaxis = d3.axisLeft(self.yscale)
             .ticks(6);
@@ -67,11 +67,11 @@ class ScatterPlot {
 
         const xmin = d3.min(self.data, d => d.x);
         const xmax = d3.max(self.data, d => d.x);
-        self.xscale.domain([xmin - 10, xmax + 10]);
+        self.xscale.domain([xmin - 20, xmax + 20]);
 
         const ymin = d3.min(self.data, d => d.y);
         const ymax = d3.max(self.data, d => d.y);
-        self.yscale.domain([ymin - 10, ymax + 10]);
+        self.yscale.domain([ymin - 20, ymax + 20]);
         self.render();
     }
 
