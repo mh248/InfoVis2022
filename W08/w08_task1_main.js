@@ -1,10 +1,3 @@
-var data = [
-    {label:'Apple', value:100},
-    {label:'Banana', value:200},
-    {label:'Cookie', value:50},
-    {label:'Doughnut', value:120},
-    {label:'Egg', value:80}
-];
 d3.csv("https://mh248.github.io/InfoVis2022/W04/w04_task2.csv")
     .then(data => {
         data.forEach(d => { d.value =+ d.width; d.label =+ d.text; });
