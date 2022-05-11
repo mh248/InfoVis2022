@@ -48,7 +48,7 @@ class BarChart {
             .ticks(5)
             .tickSizeOuter(0);
 
-        self.xaxis_group = chart.append('g')
+        self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`)
             .call( self.xaxis );
 
