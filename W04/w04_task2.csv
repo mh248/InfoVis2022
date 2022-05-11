@@ -1,4 +1,4 @@
-value,label
-100,data1
-50,data2
-80,data3
+x,y,width,height,color,text
+10,10,100,20,blue,data1
+10,40,50,20,pink,data2
+10,70,80,20,yellow,data3
