@@ -1,6 +1,6 @@
 d3.csv("https://mh248.github.io/InfoVis2022/W04/w04_task2.csv")
     .then(data => {
-        data.forEach(d => { d.value =+ d.width; d.label =+ d.text; });
+        data.forEach(d => { d.value =+ d.value; d.label =+ d.label; });
 
         var config = {
             parent: '#drawing_region',
