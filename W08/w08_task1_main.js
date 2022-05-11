@@ -55,7 +55,7 @@ class BarChart {
         self.yaxis = d3.axisLeft( self.yscale )
             .tickSizeOuter(0);
 
-        self.yaxis_group = chart.append('g')
+        self.yaxis_group = self.chart.append('g')
             .call( self.yaxis );
     }
     update() {
