@@ -31,7 +31,7 @@ class BarChart {
             .attr('width', self.config.width)
             .attr('height', self.config.height);
         
-        self.chart = svg.append('g')
+        self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
