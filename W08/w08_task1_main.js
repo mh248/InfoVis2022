@@ -1,6 +1,6 @@
 d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_data.csv")
     .then(data => {
-        data.forEach(d => { d.value =+ d.value; d.label =+ d.label; });
+        data.forEach(d => { d.value = +d.value; d.label = +d.label; });
         console.log(data);
 
         var config = {
@@ -34,7 +34,7 @@ class BarChart {
         
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
-
+        console.log(self.chart)
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         
@@ -63,9 +63,11 @@ class BarChart {
         let self = this;
 
         const xmax = d3.max(self.data, d => d.value);
+        console.log(xmax)
         self.xscale.domain([0, xmax]);
 
         const ymax = self.data.map(d => d.label);
+        console.log(ymax)
         self.yscale.domain(ymax);
 
         self.render();

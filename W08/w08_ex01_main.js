@@ -45,7 +45,7 @@ const xaxis_group = chart.append('g')
 
 const yaxis_group = chart.append('g')
       .call( yaxis );
-
+console.log(chart)
 // Draw bars
 chart.selectAll("rect").data(data).enter()
     .append("rect")
@@ -53,3 +53,5 @@ chart.selectAll("rect").data(data).enter()
     .attr("y", d => yscale(d.label))
     .attr("width", d => xscale(d.value))
     .attr("height", yscale.bandwidth());
+
+console.log(chart)
