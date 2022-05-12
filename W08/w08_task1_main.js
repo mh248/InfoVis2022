@@ -1,7 +1,6 @@
 d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_data.csv")
     .then(data => {
         data.forEach(d => { d.value = +d.value });
-        console.log(data);
 
         var config = {
             parent: '#drawing_region',
@@ -13,7 +12,9 @@ d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_data.csv")
         const bar_chart = new BarChart(config, data);
         bar_chart.update();
     })
-
+    .catch(error => {
+        console.log(error);
+    });
 class BarChart {
     constructor(config, data) {
         this.config = {
@@ -63,11 +64,9 @@ class BarChart {
         let self = this;
 
         const xmax = d3.max(self.data, d => d.value);
-        console.log(xmax)
         self.xscale.domain([0, xmax]);
 
         const ymax = self.data.map(d => d.label);
-        console.log(ymax)
         self.yscale.domain(ymax);
 
         self.render();
