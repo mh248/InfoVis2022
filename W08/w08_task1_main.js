@@ -1,4 +1,4 @@
-d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_data.csv")
+d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_task1_data.csv")
     .then(data => {
         data.forEach(d => { d.value = +d.value });
 
@@ -33,7 +33,7 @@ class BarChart {
             .attr('width', self.config.width)
             .attr('height', self.config.height);
         
-        self.chart = self.svg.append('g')
+        self.chart = self.svg.append('path')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
         console.log(self.chart)
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
