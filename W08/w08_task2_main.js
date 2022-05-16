@@ -72,10 +72,10 @@ class LineChart {
     }
     render() {
         let self = this;
+        const line = d3.line()
+            .x( d => d.x )
+            .y( d => d.y );
         self.chart.selectAll("rect")
-            .data(self.data)
-            .enter()
-            .append("path")
             .attr('d', line(data))
             .attr('stroke', 'black')
             .attr('fill', 'none');
