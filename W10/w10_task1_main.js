@@ -25,11 +25,11 @@ class BarChart {
         }
         this.data = data;
         this.init();
-        
+
         d3.select('#reverse')
             .on('click', d => {
             this.data.reverse();
-            update();
+            this.update();
     });
     }
     init() {
