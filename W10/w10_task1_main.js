@@ -85,7 +85,7 @@ class BarChart {
         d3.select('#descend')
             .on('click', d => {
                 self.data.sort(function(a,b) {
-                    return a.value + b.value;
+                    return b.value - a.value;
                 });
                 self.update();
             });
