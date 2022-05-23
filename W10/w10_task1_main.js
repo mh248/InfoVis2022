@@ -85,6 +85,7 @@ class BarChart {
         d3.select('#reverse')
             .on('click', d => {
                 this.data.reverse();
+                console.log(this.data.reverse())
                 this.update();
             });
     }
