@@ -73,7 +73,7 @@ class BarChart {
     }
     update() {
         let self = this;
-
+        console.log(this.data)
         const xmax = d3.max(self.data, d => d.value);
         self.xscale.domain([0, xmax]);
 
@@ -85,7 +85,6 @@ class BarChart {
         d3.select('#reverse')
             .on('click', d => {
                 this.data.reverse();
-               // console.log(this.data)
                 this.update();
             });
     }
