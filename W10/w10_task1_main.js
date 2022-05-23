@@ -11,9 +11,6 @@ d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_task1_data.csv")
 
         var bar_chart = new BarChart(config, data);
         bar_chart.update();
-
-
-
     })
     .catch(error => {
         console.log(error);
@@ -28,10 +25,6 @@ class BarChart {
         }
         this.data = data;
         this.init();
-        d3.select('#reverse')
-            .on('click', d => {
-                console.log("検知1")
-            });
     }
     init() {
         let self = this;
@@ -65,11 +58,6 @@ class BarChart {
 
         self.yaxis_group = self.chart.append('g')
             .call(self.yaxis);
-
-        d3.select('#reverse')
-            .on('click', d => {
-                console.log("検知3")
-            });
     }
     update() {
         let self = this;
@@ -92,8 +80,7 @@ class BarChart {
         let self = this;
         self.chart.selectAll("rect")
             .data(self.data)
-            .enter()
-            .append("rect")
+            .join("rect")
             .attr("x", 0)
             .attr("y", d => self.yscale(d.label))
             .attr("width", d => self.xscale(d.value))
