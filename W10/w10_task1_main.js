@@ -12,10 +12,7 @@ d3.csv("https://mh248.github.io/InfoVis2022/W08/w08_task1_data.csv")
         var bar_chart = new BarChart(config, data);
         bar_chart.update();
 
-        d3.select('#reverse')
-    .on('click', d => {
-        console.log("検知2")
-    });
+
         
     })
     .catch(error => {
