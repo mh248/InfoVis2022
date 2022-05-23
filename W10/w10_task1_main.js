@@ -75,6 +75,20 @@ class BarChart {
                 self.data.reverse();
                 self.update();
             });
+        d3.select('#ascend')
+            .on('click', d => {
+                self.data.sort(function(a,b) {
+                    return a.value < b.value;
+                });
+                self.update();
+            });
+        d3.select('#descend')
+            .on('click', d => {
+                self.data.sort(function(a,b) {
+                    return a.value > b.value;
+                });
+                self.update();
+            });
     }
     render() {
         let self = this;
