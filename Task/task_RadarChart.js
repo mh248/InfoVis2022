@@ -44,13 +44,16 @@ class RadarChart {
 
     render() {
         let self = this;
-        self.chart.selectAll('path')
-            .data(self.new_data)
-            .join('path')
+        let path = self.chart.selectAll('path')
+        .data(self.new_data)
+        .join('path')
+        
+        path
             .transition(400)
             .attr('d', function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + 'z'; })
             .attr('stroke', d => self.config.cscale( self.cvalue(d) ))
-            .attr('stroke-width', 2)
+            .attr('stroke-width', 2);
+        path
             .on('click', function(ev,d) {
                 const is_active = filter.includes(d.prefecture);
                 if ( is_active ) {
