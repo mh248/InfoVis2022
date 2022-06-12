@@ -35,7 +35,7 @@ class LineChart {
             .range([self.inner_height, 0]);
 
         self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(['setosa','versicolor','virginica'])
+            .ticks(['合計','生活','事務'])
             .tickSizeOuter(0);
 
         self.yaxis = d3.axisLeft(self.yscale)
@@ -68,10 +68,10 @@ class LineChart {
     update() {
         let self = this;
 
-        const data_map = d3.rollup( self.data, v => v.sum, d => d.prefecture );
+        const data_map = d3.rollup( self.data, v => v.length, d => d.prefecture );
         console.log(data_map)
-    //    const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
-     //   line_data_kochi.reduce(function(s, element){return s+element.sum},0)/line_data_kochi.length
+        const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
+        line_data_kochi.reduce(function(s, element){return s+element.sum},0)/line_data_kochi.length
         self.aggregated_data = Array.from( data_map, ([key,count]) => ({key,count}) );
 
         self.cvalue = d => d.key;
@@ -90,6 +90,24 @@ class LineChart {
 
     render() {
         let self = this;
+
+        self.chart.selectAll(".grid")
+            .data(self.new_data)
+            .enter()
+            .append("path")
+            .attr("d", function(d,i){return line(d)+"z";})
+            .attr("stroke", "black")
+            .attr("stroke-dasharray", "2");
+        
+        self.chart.selectAll(".data")
+            .data(dataArr)
+            .enter()
+            .append("path")
+            .attr("d", function(d,i){return line(d)+"z";})
+            .attr("stroke", function(d,i){return i ? "red": "blue";})
+            .attr("stroke-width", 2);
+    
+        svg.selectAll("path").attr("fill", "none")
 
         self.chart.selectAll(".line")
             .data(self.aggregated_data)
