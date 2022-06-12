@@ -23,7 +23,7 @@ class RadarChart {
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
-        self.grid = [[1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4], [5, 5, 5]]
+        self.grid = [[200, 200, 200], [400, 400, 400], [800, 800, 800], [1000, 1000, 1000]]
         self.label = ['合計', '生活', '事務']
     }
 
