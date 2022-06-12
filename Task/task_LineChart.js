@@ -93,7 +93,7 @@ class LineChart {
             .data(self.grid)
             .enter()
             .append("path")
-            .attr("d", function(d,i){return line(d)+"z";})
+            .attr("d", function(d,i){return d3.line(d)+"z";})
             .attr("stroke", "black")
             .attr("stroke-dasharray", "2");
         
@@ -101,7 +101,7 @@ class LineChart {
             .data(self.new_data)
             .enter()
             .append("path")
-            .attr("d", function(d,i){return line(d)+"z";})
+            .attr("d", function(d,i){return d3.line(d)+"z";})
             .attr("stroke", function(d,i){return i ? "red": "blue";})
             .attr("stroke-width", 2);
     
