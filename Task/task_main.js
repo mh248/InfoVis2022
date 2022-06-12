@@ -26,8 +26,8 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
         }, input_data );
         scatter_plot.update();
 
-        bar_chart = new LineChart( {
-            parent: '#drawing_region_linechart',
+        bar_chart = new RadarChart( {
+            parent: '#drawing_region_radarchart',
             width: 256,
             height: 256,
             margin: {top:10, right:10, bottom:50, left:50},

@@ -1,4 +1,4 @@
-class LineChart {
+class RadarChart {
     constructor (config, data) {
         this.config = {
             parent: config.parent,
@@ -25,48 +25,6 @@ class LineChart {
 
         self.grid = [[1,1,1],[2,2,2],[3,3,3],[4,4,4],[5,5,5]]
         self.label = ['合計','生活','事務']
-
-/*
-        self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
-        self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
-
-        self.xscale = d3.scaleBand()
-            .range([0, self.inner_width])
-            .paddingInner(0.2)
-            .paddingOuter(0.1);
-
-        self.yscale = d3.scaleLinear()
-            .range([self.inner_height, 0]);
-
-        self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(['合計','生活','事務'])
-            .tickSizeOuter(0);
-
-        self.yaxis = d3.axisLeft(self.yscale)
-            .ticks(5)
-            .tickSizeOuter(0);
-
-        self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
-
-        self.yaxis_group = self.chart.append('g');
-
-        const xlabel_space = 40;
-        self.svg.append('text')
-            .style('font-size', '12px')
-            .attr('x', self.config.width / 2)
-            .attr('y', self.inner_height + self.config.margin.top + xlabel_space)
-            .text( self.config.xlabel );
-
-        const ylabel_space = 50;
-        self.svg.append('text')
-            .style('font-size', '12px')
-            .attr('transform', `rotate(-90)`)
-            .attr('y', self.config.margin.left - ylabel_space)
-            .attr('x', -(self.config.height / 2))
-            .attr('text-anchor', 'middle')
-            .attr('dy', '1em')
-            .text( self.config.ylabel );*/
     }
 
     update() {
@@ -122,32 +80,5 @@ class LineChart {
     
         self.svg.selectAll("path")
             .attr('fill', 'none');
-/*
-        self.chart.selectAll(".line")
-            .data(self.aggregated_data)
-            .join("rect")
-            .attr("class", "line")
-            .attr("x", d => self.xscale( self.xvalue(d) ) )
-            .attr("y", d => self.yscale( self.yvalue(d) ) )
-            .attr("width", self.xscale.bandwidth())
-            .attr("height", d => self.inner_height - self.yscale( self.yvalue(d) ))
-            .attr("fill", d => self.config.cscale( self.cvalue(d) ))
-            .on('click', function(ev,d) {
-                const is_active = filter.includes(d.key);
-                if ( is_active ) {
-                    filter = filter.filter( f => f !== d.key );
-                }
-                else {
-                    filter.push( d.key );
-                }
-                Filter();
-                d3.select(this).classed('active', !is_active);
-            });
-
-        self.xaxis_group
-            .call(self.xaxis);
-
-        self.yaxis_group
-            .call(self.yaxis); */
     }
 }
