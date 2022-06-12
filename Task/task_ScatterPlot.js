@@ -94,6 +94,7 @@ class ScatterPlot {
 
         const circle_radius = 3;
         circles
+            .transition(400)
             .attr('r', circle_radius)
             .attr('cx', d => self.xscale(self.xvalue(d)))
             .attr('cy', d => self.yscale(self.yvalue(d)))
