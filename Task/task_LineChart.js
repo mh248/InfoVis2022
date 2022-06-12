@@ -23,6 +23,8 @@ class LineChart {
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
+        self.grid = [[1,1,1],[2,2,2],[3,3,3],[4,4,4],[5,5,5]]
+/*
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
@@ -62,7 +64,7 @@ class LineChart {
             .attr('x', -(self.config.height / 2))
             .attr('text-anchor', 'middle')
             .attr('dy', '1em')
-            .text( self.config.ylabel );
+            .text( self.config.ylabel );*/
     }
 
     update() {
@@ -73,17 +75,13 @@ class LineChart {
         const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
         line_data_kochi.reduce(function(s, element){return s+element.sum},0)/line_data_kochi.length
         self.aggregated_data = Array.from( data_map, ([key,count]) => ({key,count}) );
+        self.new_data = [[3,4,6],[7,4,2]]
 
-        self.cvalue = d => d.key;
-        self.xvalue = d => d.key;
-        self.yvalue = d => d.count;
-
-        const items = self.aggregated_data.map( self.xvalue );
-        self.xscale.domain(items);
-
-        const ymin = 0;
-        const ymax = d3.max( self.aggregated_data, self.yvalue );
-        self.yscale.domain([ymin, ymax]);
+        self.scale = d3.scaleLinear()
+            .domain([0,5]).range([0,90]);
+        self.line = d3.line()
+            .x(function(d,i){return scale(d) * Math.sin(Math.PI*2/3 * i) + 100;})
+            .y(function(d,i){return -scale(d) * Math.cos(Math.PI*2/3 * i) + 100;})
 
         self.render();
     }
@@ -92,7 +90,7 @@ class LineChart {
         let self = this;
 
         self.chart.selectAll(".grid")
-            .data(self.new_data)
+            .data(self.grid)
             .enter()
             .append("path")
             .attr("d", function(d,i){return line(d)+"z";})
@@ -100,7 +98,7 @@ class LineChart {
             .attr("stroke-dasharray", "2");
         
         self.chart.selectAll(".data")
-            .data(dataArr)
+            .data(self.new_data)
             .enter()
             .append("path")
             .attr("d", function(d,i){return line(d)+"z";})
@@ -108,7 +106,7 @@ class LineChart {
             .attr("stroke-width", 2);
     
         svg.selectAll("path").attr("fill", "none")
-
+/*
         self.chart.selectAll(".line")
             .data(self.aggregated_data)
             .join("rect")
@@ -134,6 +132,6 @@ class LineChart {
             .call(self.xaxis);
 
         self.yaxis_group
-            .call(self.yaxis);
+            .call(self.yaxis); */
     }
 }
