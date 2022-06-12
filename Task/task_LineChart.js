@@ -89,15 +89,6 @@ class LineChart {
 
     render() {
         let self = this;
-
-        self.chart.selectAll("path.grid")
-            .data(self.grid)
-            .enter()
-            .append("path")
-            .attr("d", function(d,i){return self.line(d)+"z";})
-            .attr("stroke", "black")
-            .attr("stroke-dasharray", "2");
-        
         self.chart.selectAll("path")
             .data(self.new_data)
             .enter()
@@ -105,6 +96,13 @@ class LineChart {
             .attr("d", function(d,i){return self.line(d)+"z";})
             .attr("stroke", function(d,i){return i ? "red": "blue";})
             .attr("stroke-width", 2);
+        self.chart.selectAll("path.grid")
+            .data(self.grid)
+            .enter()
+            .append("path")
+            .attr("d", function(d,i){return self.line(d)+"z";})
+            .attr("stroke", "black")
+            .attr("stroke-dasharray", "2");
     
         self.svg.selectAll("path").attr("fill", "none")
 /*
