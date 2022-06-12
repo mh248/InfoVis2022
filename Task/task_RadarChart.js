@@ -30,7 +30,6 @@ class RadarChart {
     update() {
         let self = this;
 
-        const data_map = d3.rollup(self.data, v => v.length, d => d.prefecture);
         const data_map2 = d3.group(self.data, d => d.prefecture)
 
         const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
