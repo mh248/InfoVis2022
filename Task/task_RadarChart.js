@@ -25,6 +25,7 @@ class RadarChart {
 
         self.grid = [[200, 200, 200], [400, 400, 400], [600, 600, 600], [800, 800, 800], [1000, 1000, 1000]]
         self.label = ['合計', '生活', '事務']
+        self.label_s = [1000,1000,1000]
     }
 
     update() {
@@ -70,10 +71,10 @@ class RadarChart {
             .attr("stroke-dasharray", "2")
             .attr("fill", "none");
         self.chart.selectAll("text")
-            .data(self.label)
+            .data(self.label_s)
             .join()
             .append("text")
-            .text(function (d, i) { return i + 1; })
+            .text(self.label)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
             .attr('x', function (d, i) { return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
