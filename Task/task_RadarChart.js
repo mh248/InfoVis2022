@@ -46,8 +46,7 @@ class RadarChart {
         let self = this;
         self.chart.selectAll("path")
             .data(self.new_data)
-            .enter()
-            .append("path")
+            .join("path")
             .attr("d", function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + "z"; })
             .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
             .attr("stroke-width", 2)
