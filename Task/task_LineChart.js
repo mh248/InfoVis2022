@@ -75,10 +75,11 @@ class LineChart {
         const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
         line_data_kochi.reduce(function(s, element){return s+element.sum},0)/line_data_kochi.length
         self.aggregated_data = Array.from( data_map, ([key,count]) => ({key,count}) );
+
         self.new_data = [[3,4,6],[7,4,2]]
 
-        self.scale = d3.scaleLinear()
-            .domain([0,5]).range([0,90]);
+   /*     self.scale = d3.scaleLinear()
+            .domain([0,5]).range([0,90]); */
         self.line = d3.line()
             .x(function(d,i){return 10 * d * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + 50;})
             .y(function(d,i){return 10 * d * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + 50;})
