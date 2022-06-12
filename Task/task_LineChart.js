@@ -86,8 +86,8 @@ class LineChart {
             .domain([0, 10])
             .range([0, self.config.width/2 - self.config.margin.top])
         self.line = d3.line()
-            .x(function(d,i){return rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
-            .y(function(d,i){return rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
+            .x(function(d,i){return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
+            .y(function(d,i){return self.rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
         
         self.render();
     }
