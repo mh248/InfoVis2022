@@ -35,6 +35,7 @@ function draw(str) {
     // CSVデータ取得
     d3.csv("js/" + str + ".csv", function (data){
         // CSVのデータから最小値と最大値を取得（色の定義域）
+        console.log(data)
         color.domain([
             d3.min(data.value),
             d3.max(data.value)
