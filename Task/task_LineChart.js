@@ -116,8 +116,8 @@ class LineChart {
             .text(function(d, i){ return i+1; })
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
-            .attr('x', function(d, i){ return rScale(d) * Math.cos(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
-            .attr('y', function(d, i){ return rScale(d) * Math.sin(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
+            .attr('x', function(d, i){ return self.rScale(d) * Math.cos(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
+            .attr('y', function(d, i){ return self.rScale(d) * Math.sin(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
             .attr("font-size", "15px");
     
         self.svg.selectAll("path")
