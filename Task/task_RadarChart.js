@@ -31,6 +31,7 @@ class RadarChart {
         let self = this;
         self.new_data = self.data.filter(d => d.city == '')
         console.log(self.new_data)
+        self.cvalue = d => d.predecture;
         self.rScale = d3.scaleLinear()
             .domain([0, 1000])
             .range([0, self.config.width / 2 - self.config.margin.top])
