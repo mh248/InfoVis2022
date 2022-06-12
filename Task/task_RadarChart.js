@@ -74,7 +74,7 @@ class RadarChart {
             .data(self.label_s)
             .enter()
             .append("text")
-            .text(function(d,i){return self.label(i)})
+            .text(function(d,i){return self.label[i]})
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
             .attr('x', function (d, i) { return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
