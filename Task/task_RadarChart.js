@@ -46,7 +46,7 @@ class RadarChart {
             .data(self.new_data)
             .enter()
             .append("path")
-            .attr("d", function (d, i) { console.log(self.line(d)); return self.line(d) + "z"; })
+            .attr("d", function (d, i) { console.log(self.line(d)); return self.line(Array(d.sum, d.life, d.office)) + "z"; })
             // .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
             .attr("stroke", function (d, i) { return i ? "red" : "blue"; })
             .attr("stroke-width", 2);
