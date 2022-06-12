@@ -35,7 +35,7 @@ function draw(str) {
     // CSVデータ取得
     d3.csv("js/" + str + ".csv", function (data){
         // CSVのデータから最小値と最大値を取得（色の定義域）
-        console.log(data)
+
         color.domain([
             d3.min(data.value),
             d3.max(data.value)
@@ -43,6 +43,7 @@ function draw(str) {
         // JSONデータ取得
         d3.json("js/japan.json", function (jpn) {
             // JSONの座標データとCSVデータを連携
+            console.log(jpn)
             for (var i = 0; i < data.length; i++) {
                 var dataState = data[i].state;
                 var dataValue = parseFloat(data[i].value);
