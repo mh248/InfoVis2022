@@ -49,7 +49,18 @@ class RadarChart {
             .append("path")
             .attr("d", function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + "z"; })
             .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
-            .attr("stroke-width", 2);
+            .attr("stroke-width", 2)
+            .on('click', function(ev,d) {
+                const is_active = filter.includes(d.prefecture);
+                if ( is_active ) {
+                    filter = filter.filter( f => f !== d.prefecture );
+                }
+                else {
+                    filter.push( d.prefecture );
+                }
+                Filter();
+                d3.select(this).classed('active', !is_active);
+            });
         self.chart.selectAll("path.grid")
             .data(self.grid)
             .enter()
@@ -65,7 +76,7 @@ class RadarChart {
             .text(function (d, i) { return i + 1; })
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
-            .attr('x', function (d, i) { console.log(self.rScale(d)); return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
+            .attr('x', function (d, i) { return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
             .attr('y', function (d, i) { return self.rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
             .attr("font-size", "15px");
 
