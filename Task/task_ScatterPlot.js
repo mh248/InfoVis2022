@@ -87,7 +87,7 @@ class ScatterPlot {
 
     render() {
         let self = this;
-   //     console.log(self.data)
+        //     console.log(self.data)
         let circles = self.chart.selectAll('circle')
             .data(self.data.filter(d => d.city != ''))
             .join('circle');
@@ -116,13 +116,13 @@ class ScatterPlot {
                 d3.select('#tooltip')
                     .style('opacity', 0);
             })
-            .on('click', function(ev,d) {
+            .on('click', function (ev, d) {
                 const is_active = filter.includes(d.prefecture);
-                if ( is_active ) {
-                    filter = filter.filter( f => f !== d.prefecture );
+                if (is_active) {
+                    filter = filter.filter(f => f !== d.prefecture);
                 }
                 else {
-                    filter.push( d.prefecture );
+                    filter.push(d.prefecture);
                 }
                 Filter();
                 d3.select(this).classed('active', !is_active);

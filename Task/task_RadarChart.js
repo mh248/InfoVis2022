@@ -25,7 +25,7 @@ class RadarChart {
 
         self.grid = [[200, 200, 200], [400, 400, 400], [600, 600, 600], [800, 800, 800], [1000, 1000, 1000]]
         self.label = ['合計', '生活', '事務']
-        self.label_s = [1000,1000,1000]
+        self.label_s = [1000, 1000, 1000]
     }
 
     update() {
@@ -45,22 +45,22 @@ class RadarChart {
     render() {
         let self = this;
         let path = self.chart.selectAll('path')
-        .data(self.new_data)
-        .join('path')
-        
+            .data(self.new_data)
+            .join('path')
+
         path
             .transition(400)
             .attr('d', function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + 'z'; })
-            .attr('stroke', d => self.config.cscale( self.cvalue(d) ))
+            .attr('stroke', d => self.config.cscale(self.cvalue(d)))
             .attr('stroke-width', 2);
         path
-            .on('click', function(ev,d) {
+            .on('click', function (ev, d) {
                 const is_active = filter.includes(d.prefecture);
-                if ( is_active ) {
-                    filter = filter.filter( f => f !== d.prefecture );
+                if (is_active) {
+                    filter = filter.filter(f => f !== d.prefecture);
                 }
                 else {
-                    filter.push( d.prefecture );
+                    filter.push(d.prefecture);
                 }
                 Filter();
                 d3.select(this).classed('active', !is_active);
@@ -77,7 +77,7 @@ class RadarChart {
             .data(self.label_s)
             .enter()
             .append('text')
-            .text(function(d,i){return self.label[i]})
+            .text(function (d, i) { return self.label[i] })
             .attr('text-anchor', 'middle')
             .attr('dominant-baseline', 'middle')
             .attr('x', function (d, i) { return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 3; })
