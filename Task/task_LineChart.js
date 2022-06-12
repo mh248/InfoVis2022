@@ -99,7 +99,8 @@ class LineChart {
             .enter()
             .append("path")
             .attr("d", function(d,i){return self.line(d)+"z";})
-            .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
+           // .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
+            .attr("stroke", function(d,i){return i ? "red": "blue";})
             .attr("stroke-width", 2);
         self.chart.selectAll("path.grid")
             .data(self.grid)
