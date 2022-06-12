@@ -87,12 +87,11 @@ class ScatterPlot {
 
     render() {
         let self = this;
-
+        console.log(self.data)
         let circles = self.chart.selectAll("circle")
             .data(self.data)
             .join('circle');
 
-        const circle_color = 'steelblue';
         const circle_radius = 3;
         circles
             .attr("r", circle_radius )

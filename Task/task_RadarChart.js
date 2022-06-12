@@ -38,8 +38,6 @@ class RadarChart {
 
         self.new_data = [[3,4,6],[7,4,2]]
 
-   /*     self.scale = d3.scaleLinear()
-            .domain([0,5]).range([0,90]); */
         self.rScale = d3.scaleLinear()
             .domain([0, 10])
             .range([0, self.config.width/2 - self.config.margin.top])
