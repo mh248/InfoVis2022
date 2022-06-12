@@ -5,7 +5,6 @@ var init = true;
 // 要素選択
 var $body = d3.select("body");
 var $tooltip = d3.select("#tooltip");
-var $loading = d3.select("#loading");
 var $item = d3.selectAll("#menu li");
 
 // SVG要素作成
@@ -33,7 +32,6 @@ draw('mikan');
 
 // 描画用関数
 function draw(str) {
-    $loading.style('display', 'block');
     // CSVデータ取得
     d3.csv("js/" + str + ".csv", function (data){
         // CSVのデータから最小値と最大値を取得（色の定義域）
@@ -95,7 +93,6 @@ function draw(str) {
             map.transition()
                 .duration(400)
                 .style("fill", function (d) {
-                    $loading.style('display', 'none');
                     var value = d.properties.value;
                     if (value) {
                         return color(value);
