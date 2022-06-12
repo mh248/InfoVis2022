@@ -122,6 +122,7 @@ class LineChart {
             .attr("font-size", "15px");
     
         self.svg.selectAll("path")
+            .attr('fill', 'none');
 /*
         self.chart.selectAll(".line")
             .data(self.aggregated_data)
