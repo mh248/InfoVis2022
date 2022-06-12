@@ -87,7 +87,7 @@ class ScatterPlot {
 
     render() {
         let self = this;
-        console.log(self.data)
+   //     console.log(self.data)
         let circles = self.chart.selectAll("circle")
             .data(self.data.filter(d => d.city != ''))
             .join('circle');
