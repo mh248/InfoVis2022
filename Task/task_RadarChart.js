@@ -31,7 +31,7 @@ class RadarChart {
         let self = this;
 
         const data_map = d3.rollup(self.data, v => v.length, d => d.prefecture);
-        const data_map2 = d3.group(self.data, d => d.prefecture).map({console.log(d.sum)})
+        const data_map2 = d3.group(self.data, d => d.prefecture).map(d => {console.log(d.sum)})
         console.log(data_map)
         const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
         line_data_kochi.reduce(function (s, element) { return s + element.sum }, 0) / line_data_kochi.length
