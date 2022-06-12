@@ -24,6 +24,8 @@ class LineChart {
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
         self.grid = [[1,1,1],[2,2,2],[3,3,3],[4,4,4],[5,5,5]]
+        self.label = ['合計','生活','事務']
+
 /*
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
@@ -80,10 +82,13 @@ class LineChart {
 
    /*     self.scale = d3.scaleLinear()
             .domain([0,5]).range([0,90]); */
+        self.rScale = d3.scaleLinear()
+            .domain([0, max])
+            .range([0, self.config.width/2 - self.config.margin.top])
         self.line = d3.line()
-            .x(function(d,i){return 10 * d * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + 50;})
-            .y(function(d,i){return 10 * d * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + 50;})
-
+            .x(function(d,i){return rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
+            .y(function(d,i){return rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width/2;})
+        
         self.render();
     }
 
@@ -94,7 +99,7 @@ class LineChart {
             .enter()
             .append("path")
             .attr("d", function(d,i){return self.line(d)+"z";})
-            .attr("stroke", function(d,i){return i ? "red": "blue";})
+            .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
             .attr("stroke-width", 2);
         self.chart.selectAll("path.grid")
             .data(self.grid)
@@ -102,9 +107,20 @@ class LineChart {
             .append("path")
             .attr("d", function(d,i){return self.line(d)+"z";})
             .attr("stroke", "black")
-            .attr("stroke-dasharray", "2");
+            .attr("stroke-dasharray", "2")
+            .attr("fill", "none");
+        self.chart.selectAll("text")
+            .data(self.label)
+            .enter()
+            .append("text")
+            .text(function(d, i){ return i+1; })
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "middle")
+            .attr('x', function(d, i){ return rScale(d) * Math.cos(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
+            .attr('y', function(d, i){ return rScale(d) * Math.sin(2 * Math.PI / 3*i - (Math.PI / 2)) + self.config.width/2; })
+            .attr("font-size", "15px");
     
-        self.svg.selectAll("path").attr("fill", "none")
+        self.svg.selectAll("path")
 /*
         self.chart.selectAll(".line")
             .data(self.aggregated_data)
