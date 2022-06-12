@@ -7,8 +7,8 @@ class ScatterPlot {
             height: config.height || 256,
             margin: config.margin || {top:10, right:10, bottom:10, left:10},
             xlabel: config.xlabel || '',
-            ylabel: config.ylabel || ''//,
-            //cscale: config.cscale
+            ylabel: config.ylabel || '',
+            cscale: config.cscale
         }
         this.data = data;
         this.init();
@@ -70,7 +70,7 @@ class ScatterPlot {
     update() {
         let self = this;
 
-       // self.cvalue = d => d.species;
+        self.cvalue = d => d.prefecture;
         self.xvalue = d => d.life;
         self.yvalue = d => d.office;
 
@@ -98,13 +98,13 @@ class ScatterPlot {
             .attr("r", circle_radius )
             .attr("cx", d => self.xscale( self.xvalue(d) ) )
             .attr("cy", d => self.yscale( self.yvalue(d) ) )
-          //  .attr("fill", d => self.config.cscale( self.cvalue(d) ) );
+            .attr("fill", d => self.config.cscale( self.cvalue(d) ) );
 
         circles
             .on('mouseover', (e,d) => {
                 d3.select('#tooltip')
                     .style('opacity', 1)
-                    .html(`<div class="tooltip-label">${d.state}</div>(${d.life}, ${d.office})`);
+                    .html(`<div class="tooltip-label">${d.city}</div>(${d.life}, ${d.office})`);
             })
             .on('mousemove', (e) => {
                 const padding = 10;
