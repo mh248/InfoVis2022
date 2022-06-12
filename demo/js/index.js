@@ -17,7 +17,7 @@ var svg = $body
     });
 
 // 投影法の指定
-var projectionOption = g3.geoMercator()
+var projectionOption = d3.geoMercator()
 	.center([137, 35])				// 中心の座標を指定
 	.scale(1800)					// スケール（ズーム）の指定
 	.translate([width  / 2, height  / 2]); // 移動する
