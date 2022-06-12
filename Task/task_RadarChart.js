@@ -31,7 +31,7 @@ class RadarChart {
         let self = this;
         self.new_data = self.data.filter(d => d.city == '')
         console.log(self.new_data)
-        self.cvalue = d => d.predecture;
+        self.cvalue = d => d.prefecture;
         self.rScale = d3.scaleLinear()
             .domain([0, 1000])
             .range([0, self.config.width / 2 - self.config.margin.top])
@@ -49,7 +49,6 @@ class RadarChart {
             .append("path")
             .attr("d", function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + "z"; })
             .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
-            .attr("stroke", function (d, i) { return i ? "red" : "blue"; })
             .attr("stroke-width", 2);
         self.chart.selectAll("path.grid")
             .data(self.grid)
