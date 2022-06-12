@@ -43,9 +43,12 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
 function Filter() {
     if ( filter.length == 0 ) {
         scatter_plot.data = input_data;
+        radar_chart.data = input_data;
     }
     else {
-        scatter_plot.data = input_data.filter( d => filter.includes( d.prefecture) );
+        var new_data = input_data.filter( d => filter.includes( d.prefecture) );
+        scatter_plot.data = new_data;
+        radar_chart.data = new_data;
     }
     scatter_plot.update();
     radar_chart.update();
