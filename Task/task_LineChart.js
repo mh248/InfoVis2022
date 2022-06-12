@@ -79,7 +79,7 @@ class LineChart {
 
         self.scale = d3.scaleLinear()
             .domain([0,5]).range([0,90]);
-        self.line = d3.line()
+        self.line = d3.svg.line()
             .x(function(d,i){return scale(d) * Math.sin(Math.PI*2/3 * i) + 100;})
             .y(function(d,i){return -scale(d) * Math.cos(Math.PI*2/3 * i) + 100;})
 
@@ -89,19 +89,19 @@ class LineChart {
     render() {
         let self = this;
 
-        self.chart.selectAll(".grid")
+        self.chart.selectAll("path.grid")
             .data(self.grid)
             .enter()
             .append("path")
-            .attr("d", function(d,i){return d3.line(d)+"z";})
+            .attr("d", function(d,i){return self.line(d)+"z";})
             .attr("stroke", "black")
             .attr("stroke-dasharray", "2");
         
-        self.chart.selectAll(".data")
+        self.chart.selectAll("path")
             .data(self.new_data)
             .enter()
             .append("path")
-            .attr("d", function(d,i){return d3.line(d)+"z";})
+            .attr("d", function(d,i){return self.line(d)+"z";})
             .attr("stroke", function(d,i){return i ? "red": "blue";})
             .attr("stroke-width", 2);
     
