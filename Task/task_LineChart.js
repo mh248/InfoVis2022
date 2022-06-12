@@ -69,6 +69,7 @@ class LineChart {
         let self = this;
 
         const data_map = d3.rollup( self.data, v => v.sum, d => d.prefecture );
+        Logger.log(data_map)
     //    const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
      //   line_data_kochi.reduce(function(s, element){return s+element.sum},0)/line_data_kochi.length
         self.aggregated_data = Array.from( data_map, ([key,count]) => ({key,count}) );
