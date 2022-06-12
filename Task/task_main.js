@@ -1,10 +1,9 @@
-
-
 let input_data;
 let scatter_plot;
 let bar_chart;
 let filter = [];
-d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
+
+d3.csv("https://mh248.github.io/InfoVis2021/Task/kochi.csv")
     .then( data => {
         input_data = data;
         input_data.forEach( d => {
@@ -12,21 +11,21 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
             d.life = +d.life;
             d.office = +d.office;
         });
-
+/*
         const color_scale = d3.scaleOrdinal( d3.schemeCategory10 );
         color_scale.domain(['setosa','versicolor','virginica']);
-
+*/
         scatter_plot = new ScatterPlot( {
             parent: '#drawing_region_scatterplot',
             width: 256,
             height: 256,
             margin: {top:10, right:10, bottom:50, left:50},
-            xlabel: 'Sepal length [cm]',
-            ylabel: 'Sepal width [cm]',
-            cscale: color_scale
+            xlabel: ' 生活系ごみ[g/人日]',
+            ylabel: ' 事務系ごみ[g/人日]'//,
+            //cscale: color_scale
         }, input_data );
         scatter_plot.update();
-
+/*
         bar_chart = new BarChart( {
             parent: '#drawing_region_barchart',
             width: 256,
@@ -35,7 +34,7 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
             xlabel: 'Species',
             cscale: color_scale
         }, input_data );
-        bar_chart.update();
+        bar_chart.update();*/
     })
     .catch( error => {
         console.log( error );
