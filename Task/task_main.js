@@ -26,7 +26,7 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
         }, input_data );
         scatter_plot.update();
 
-        bar_chart = new RadarChart( {
+        radar_chart = new RadarChart( {
             parent: '#drawing_region_radarchart',
             width: 256,
             height: 256,
@@ -34,7 +34,7 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
             xlabel: '',
             cscale: color_scale
         }, input_data );
-        bar_chart.update();
+        radar_chart.update();
     })
     .catch( error => {
         console.log( error );
@@ -48,4 +48,5 @@ function Filter() {
         scatter_plot.data = input_data.filter( d => filter.includes( d.prefecture) );
     }
     scatter_plot.update();
+    radar_chart.update();
 }
