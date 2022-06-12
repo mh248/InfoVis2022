@@ -29,9 +29,9 @@ class RadarChart {
 
     update() {
         let self = this;
-
-        const data_map2 = d3.group(self.data, d => d.prefecture)
-        self.aggregated_data = Array.from(data_map2, ([key, count]) => ({ key, count })).map(d => d3.sum(d, dd => dd.sum));
+        
+        const data_map2 = d3.rollup(self.data, v => d3.sum(v, d => d.sum), d => d.prefecture)
+        self.aggregated_data = Array.from(data_map2, ([key, count]) => ({ key, count }));
         console.log(self.aggregated_data)
         self.new_data = [[3, 4, 6], [7, 4, 2]]
 
