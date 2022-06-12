@@ -29,11 +29,7 @@ class RadarChart {
 
     update() {
         let self = this;
-        
-        const data_map2 = d3.rollup(self.data, v => d3.sum(v, d => d.sum), d => d.prefecture)
-        self.aggregated_data = Array.from(data_map2, ([key, count]) => ({ key, count }));
-        console.log(self.aggregated_data)
-        self.new_data = [[3, 4, 6], [7, 4, 2]]
+        self.new_data = self.data.filter(d => d.city == '')
 
         self.rScale = d3.scaleLinear()
             .domain([0, 10])
