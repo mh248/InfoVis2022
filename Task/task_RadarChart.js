@@ -35,7 +35,7 @@ class RadarChart {
         const line_data_kochi = self.data.filter(d => d.prefecture == '高知')
         line_data_kochi.reduce(function (s, element) { return s + element.sum }, 0) / line_data_kochi.length
         self.aggregated_data = Array.from(data_map2, ([key, count]) => ({ key, count }));
-        console.log(self.aggregated)
+        console.log(self.aggregated_data)
         self.new_data = [[3, 4, 6], [7, 4, 2]]
 
         self.rScale = d3.scaleLinear()
