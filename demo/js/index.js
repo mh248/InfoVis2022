@@ -39,9 +39,7 @@ function draw(str) {
         // CSVのデータから最小値と最大値を取得（色の定義域）
         color.domain([
             d3.min(data.value),
-            d3.max(data, function (d) {
-                return Number(d.value);
-            })
+            d3.max(data.value)
         ]);
         // JSONデータ取得
         d3.json("js/japan.json", function (jpn) {
