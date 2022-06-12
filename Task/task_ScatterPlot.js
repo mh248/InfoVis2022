@@ -89,7 +89,7 @@ class ScatterPlot {
         let self = this;
         console.log(self.data)
         let circles = self.chart.selectAll("circle")
-            .data(self.data)
+            .data(self.data.filter(d => d.city != ''))
             .join('circle');
 
         const circle_radius = 3;
