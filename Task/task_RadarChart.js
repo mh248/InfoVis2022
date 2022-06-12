@@ -30,9 +30,9 @@ class RadarChart {
     update() {
         let self = this;
         self.new_data = self.data.filter(d => d.city == '')
-
+        console.log(self.new_data)
         self.rScale = d3.scaleLinear()
-            .domain([0, 10])
+            .domain([0, 1000])
             .range([0, self.config.width / 2 - self.config.margin.top])
         self.line = d3.line()
             .x(function (d, i) { return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
