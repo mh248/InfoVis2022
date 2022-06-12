@@ -25,7 +25,7 @@ var projectionOption = d3.geoMercator()
 var projection = d3.geoPath().projection(projectionOption);
 
 // 色の範囲を指定
-var color = d3.scale.quantize()
+var color = d3.scaleQuantize()
     .range(["rgb(191,223,255)", "rgb(153,204,255)", "rgb(115,185,253)", "rgb(77,166,255)", "rgb(38,147,255)", "rgb(0,128,255)", "rgb(0,109,217)", "rgb(0,89,178)", "rgb(0,70,140)", "rgb(0,51,102)"]);
 
 // 初期表示
