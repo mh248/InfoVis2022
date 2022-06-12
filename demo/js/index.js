@@ -17,15 +17,15 @@ var svg = $body
     });
 
 // 投影法の指定
-var projectionOption = d3.geoMercator()
+var projectionOption = d3.geo.mercator()
 	.center([137, 35])				// 中心の座標を指定
 	.scale(1800)					// スケール（ズーム）の指定
 	.translate([width  / 2, height  / 2]); // 移動する
 
-var projection = d3.geoPath().projection(projectionOption);
+var projection = d3.geo.path().projection(projectionOption);
 
 // 色の範囲を指定
-var color = d3.scaleQuantize()
+var color = d3.scale.quantize()
     .range(["rgb(191,223,255)", "rgb(153,204,255)", "rgb(115,185,253)", "rgb(77,166,255)", "rgb(38,147,255)", "rgb(0,128,255)", "rgb(0,109,217)", "rgb(0,89,178)", "rgb(0,70,140)", "rgb(0,51,102)"]);
 
 // 初期表示
