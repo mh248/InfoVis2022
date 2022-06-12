@@ -21,7 +21,7 @@ d3.csv("https://mh248.github.io/InfoVis2022/Task/garbage.csv")
             height: 256,
             margin: {top:10, right:10, bottom:50, left:50},
             xlabel: ' 生活系ごみ[g/人日]',
-            ylabel: ' 事務系ごみ[g/人日]'//,
+            ylabel: ' 事務系ごみ[g/人日]',
             cscale: color_scale
         }, input_data );
         scatter_plot.update();
