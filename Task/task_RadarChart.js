@@ -64,7 +64,7 @@ class RadarChart {
             });
         self.chart.selectAll("path.grid")
             .data(self.grid)
-            .join()
+            .enter()
             .append("path")
             .attr("d", function (d, i) { return self.line(d) + "z"; })
             .attr("stroke", "black")
@@ -72,7 +72,7 @@ class RadarChart {
             .attr("fill", "none");
         self.chart.selectAll("text")
             .data(self.label_s)
-            .join()
+            .enter()
             .append("text")
             .text(self.label)
             .attr("text-anchor", "middle")
