@@ -88,22 +88,22 @@ class ScatterPlot {
     render() {
         let self = this;
    //     console.log(self.data)
-        let circles = self.chart.selectAll("circle")
+        let circles = self.chart.selectAll('circle')
             .data(self.data.filter(d => d.city != ''))
             .join('circle');
 
         const circle_radius = 3;
         circles
-            .attr("r", circle_radius)
-            .attr("cx", d => self.xscale(self.xvalue(d)))
-            .attr("cy", d => self.yscale(self.yvalue(d)))
-            .attr("fill", d => self.config.cscale(self.cvalue(d)));
+            .attr('r', circle_radius)
+            .attr('cx', d => self.xscale(self.xvalue(d)))
+            .attr('cy', d => self.yscale(self.yvalue(d)))
+            .attr('fill', d => self.config.cscale(self.cvalue(d)));
 
         circles
             .on('mouseover', (e, d) => {
                 d3.select('#tooltip')
                     .style('opacity', 1)
-                    .html(`<div class="tooltip-label">${d.prefecture}県${d.city}</div>(${d.life}, ${d.office})`);
+                    .html(`<div class='tooltip-label'>${d.prefecture}県${d.city}</div>(${d.life}, ${d.office})`);
             })
             .on('mousemove', (e) => {
                 const padding = 10;

@@ -44,12 +44,12 @@ class RadarChart {
 
     render() {
         let self = this;
-        self.chart.selectAll("path")
+        self.chart.selectAll('path')
             .data(self.new_data)
-            .join("path")
-            .attr("d", function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + "z"; })
-            .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
-            .attr("stroke-width", 2)
+            .join('path')
+            .attr('d', function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + 'z'; })
+            .attr('stroke', d => self.config.cscale( self.cvalue(d) ))
+            .attr('stroke-width', 2)
             .on('click', function(ev,d) {
                 const is_active = filter.includes(d.prefecture);
                 if ( is_active ) {
@@ -61,26 +61,26 @@ class RadarChart {
                 Filter();
                 d3.select(this).classed('active', !is_active);
             });
-        self.chart.selectAll("path.grid")
+        self.chart.selectAll('path.grid')
             .data(self.grid)
             .enter()
-            .append("path")
-            .attr("d", function (d, i) { return self.line(d) + "z"; })
-            .attr("stroke", "black")
-            .attr("stroke-dasharray", "2")
-            .attr("fill", "none");
-        self.chart.selectAll("text")
+            .append('path')
+            .attr('d', function (d, i) { return self.line(d) + 'z'; })
+            .attr('stroke', 'black')
+            .attr('stroke-dasharray', '2')
+            .attr('fill', 'none');
+        self.chart.selectAll('text')
             .data(self.label_s)
             .enter()
-            .append("text")
+            .append('text')
             .text(function(d,i){return self.label[i]})
-            .attr("text-anchor", "middle")
-            //.attr("dominant-baseline", "middle")
+            .attr('text-anchor', 'middle')
+            //.attr('dominant-baseline', 'middle')
             .attr('x', function (d, i) { console.log(self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2 );return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
             .attr('y', function (d, i) { console.log(self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2 );return self.rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
-            .attr("font-size", "15px");
+            .attr('font-size', '15px');
 
-        self.svg.selectAll("path")
+        self.svg.selectAll('path')
             .attr('fill', 'none');
     }
 }
