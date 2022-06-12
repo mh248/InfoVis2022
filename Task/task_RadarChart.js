@@ -25,7 +25,7 @@ class RadarChart {
 
         self.grid = [[200, 200, 200], [400, 400, 400], [600, 600, 600], [800, 800, 800], [1000, 1000, 1000]]
         self.label = ['合計', '生活', '事務']
-        self.label_s = [1000,1000,600]
+        self.label_s = [1000,1000,1000]
     }
 
     update() {
@@ -76,7 +76,7 @@ class RadarChart {
             .text(function(d,i){return self.label[i]})
             .attr('text-anchor', 'middle')
             .attr('dominant-baseline', 'middle')
-            .attr('x', function (d, i) { console.log(self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2 );return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
+            .attr('x', function (d, i) { console.log(self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 3 );return self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
             .attr('y', function (d, i) { console.log(self.rScale(d) * Math.cos(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2 );return self.rScale(d) * Math.sin(2 * Math.PI / 3 * i - (Math.PI / 2)) + self.config.width / 2; })
             .attr('font-size', '15px');
 
