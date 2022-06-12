@@ -52,6 +52,7 @@ function draw(str) {
                         break;
                     }
                 }
+                console.log("s")
             }
 
             // HTMLの要素とJSONデータを連携（初回はPATH要素が無いのでenterセレクションに保管される）
