@@ -105,7 +105,7 @@ class LineChart {
             .attr("stroke", function(d,i){return i ? "red": "blue";})
             .attr("stroke-width", 2);
     
-        svg.selectAll("path").attr("fill", "none")
+        self.svg.selectAll("path").attr("fill", "none")
 /*
         self.chart.selectAll(".line")
             .data(self.aggregated_data)
