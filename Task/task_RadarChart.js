@@ -45,7 +45,7 @@ class RadarChart {
         let self = this;
         self.chart.selectAll("path")
             .data(self.new_data)
-            .enter()
+            .join()
             .append("path")
             .attr("d", function (d, i) { return self.line(Array(d.sum, d.life, d.office)) + "z"; })
             .attr("stroke", d => self.config.cscale( self.cvalue(d) ))
@@ -63,7 +63,7 @@ class RadarChart {
             });
         self.chart.selectAll("path.grid")
             .data(self.grid)
-            .enter()
+            .join()
             .append("path")
             .attr("d", function (d, i) { return self.line(d) + "z"; })
             .attr("stroke", "black")
@@ -71,7 +71,7 @@ class RadarChart {
             .attr("fill", "none");
         self.chart.selectAll("text")
             .data(self.label)
-            .enter()
+            .join()
             .append("text")
             .text(function (d, i) { return i + 1; })
             .attr("text-anchor", "middle")
